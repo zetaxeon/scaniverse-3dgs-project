@@ -33,16 +33,20 @@ committed — see [`data/README.md`](data/README.md).
 
 Below-plane reflection artifacts, measured inside the puddle ROI:
 
-| Camera height | `refl_ratio` | `n_refl` (raw) | ground pts |
-|---|---|---|---|
-| 30 cm  | 0.0318 | 4 388 | 138 155 |
-| 60 cm  | 0.0200 | 3 657 | 183 155 |
-| 100 cm | 0.0046 | 1 241 | 268 430 |
+| Camera height | `refl_ratio` | `n_refl` (raw) | ground pts | `depth_p01` |
+|---|---|---|---|---|
+| 30 cm  | 0.0318 | 4 388 | 138 155 | −0.104 m |
+| 60 cm  | 0.0200 | 3 657 | 183 155 | −0.120 m |
+| 100 cm | 0.0046 | 1 241 | 268 430 | −0.010 m |
 
-- The artifact **decreases monotonically** with camera height — about a **7× drop**
-  from 30 cm to 100 cm. In the 30 cm side view a clear downward reflection tail is
-  visible below the road plane; it is far sparser at 60/100 cm.
+- **How often** artifacts occur decreases monotonically with camera height — about a
+  **7× drop** from 30 cm to 100 cm. In the 30 cm side view a clear downward reflection
+  tail is visible below the road plane; it is far sparser at 60/100 cm.
 - The trend holds in **raw counts**, not only in the normalized ratio.
+- **How deep** they go does *not* follow the same pattern: `depth_p01` is deeper at
+  60 cm (−0.120 m) than at 30 cm (−0.104 m). So this result supports a height effect on
+  the **frequency** of below-plane artifacts, **not** on their depth. The original
+  hypothesis ("lower camera → more *and* deeper artifacts") is only half supported.
 - It is **robust to the ROI choice**: without the ROI (whole crop) the ratios are
   0.0625 / 0.0225 / 0.0065 — same ordering, same direction.
 - **Sensitivity:** across a 4×4 grid of below-plane thresholds, the
@@ -76,7 +80,9 @@ scaniverse-3dgs-project/
 ├─ src/
 │  └─ topdown_view.py      # helper: top-down view / can-center picker
 ├─ docs/
-│  └─ wet_road_3dgs.pdf    # background write-up (physics + experiment design)
+│  └─ initial_experiment_design.pdf
+│     # initial proposal (physics rationale; planned 6 dry/wet scans via Open3D).
+│     # The final implementation analyses 3 wet-road scans with plyfile — see Results.
 ├─ data/
 │  └─ README.md            # how to place the (git-ignored) PLY files
 └─ results/                # exported figures used above

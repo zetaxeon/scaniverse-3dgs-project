@@ -1,10 +1,14 @@
+from pathlib import Path
+
 import numpy as np
 import matplotlib.pyplot as plt
 from plyfile import PlyData
 
-ply_path = "high.ply"   # 여기를 실제 .ply 파일명으로 수정
+# 저장소 구조(data/raw/)에 맞춘 경로. 파일명만 바꿔 쓰면 된다.
+REPO_ROOT = Path(__file__).resolve().parents[1]
+ply_path = REPO_ROOT / "data" / "raw" / "high.ply"
 
-v = PlyData.read(ply_path)["vertex"]
+v = PlyData.read(str(ply_path))["vertex"]
 pts = np.stack([v["x"], v["y"], v["z"]], axis=1)
 
 print("num points:", pts.shape[0])
