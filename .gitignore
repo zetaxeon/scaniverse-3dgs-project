@@ -1,0 +1,31 @@
+# ---- Large 3D data (keep out of git; see data/README.md) ----
+*.ply
+*.splat
+*.zip
+
+# ---- Presentation deck: contains pre-ROI numbers and local paths baked
+#      into its figures. Kept locally, not published. ----
+docs/wetroad_refl_ratio_presentation.pdf
+
+# ---- Editor / OS junk ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+nul
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+
+# ---- Scratch / experimental notebooks (not for publication) ----
+analyze_maps(good work).ipynb
+analyze_maps(laboratory).ipynb
+analyze_maps(recent).ipynb
+
+# Keep only the cleaned notebook:
+#   notebooks/wet_road_reflection_analysis.ipynb
