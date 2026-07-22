@@ -80,6 +80,7 @@ scaniverse-3dgs-project/
 ├─ src/
 │  └─ topdown_view.py      # helper: top-down view / can-center picker
 ├─ docs/
+│  ├─ presentation.pdf     # slide deck presenting the study and its results
 │  └─ initial_experiment_design.pdf
 │     # initial proposal (physics rationale; planned 6 dry/wet scans via Open3D).
 │     # The final implementation analyses 3 wet-road scans with plyfile — see Results.
